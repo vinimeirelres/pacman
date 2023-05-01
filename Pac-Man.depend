@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1682897962 source:/home/vinicius-santos/Documentos/Pac-Man/Main.cpp
+	<stdio.h>
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_audio.h"
+	"allegro5/allegro_acodec.h"
+	"map.h"
+
+1682898127 /home/vinicius-santos/Documentos/Pac-Man/map.h
+
+1682897621 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
+	<stdio.h>
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_audio.h"
+	"allegro5/allegro_acodec.h"
+	"map.h"
+
