@@ -13,13 +13,13 @@ void pilulas::criar_pilulas(ALLEGRO_BITMAP *p)
 {
     //int m[24][24];
     map MAPA;
-    for(int i=0; i<40; i++)
+    for(int i=0; i<27; i++)
     {
-        for(j=0; j<45; j++)
+        for(j=0; j<27; j++)
         {
             if(MAPA.m[i][j]=='0')
             {
-                al_draw_bitmap_region(p, 90, 18, 5, 5, (18*j)+7, (18*i)+7, 0);//pilulas
+                al_draw_bitmap_region(p, 90, 18, 10, 10, (30*j)+5, (30*i)+5, 0);//pilulas
             }
         }
     }
@@ -29,13 +29,13 @@ void pilulas::criar_pilulas(ALLEGRO_BITMAP *p)
 void paredes::criar_paredes(ALLEGRO_BITMAP *p)
 {
     map MAPA;
-    for(int i=0; i<40; i++)
+    for(int i=0; i<27; i++)
     {
-        for(j=0; j<45; j++)
+        for(j=0; j<27; j++)
         {
             if(MAPA.m[i][j]=='1')
             {
-                al_draw_bitmap_region(p, 18, 18, 18, 18, 18*j, 18*i, 0);//paredes
+                al_draw_bitmap_region(p, 18, 18, 30, 30, 30*j,30*i, 20);//paredes
             }
         }
     }
@@ -44,13 +44,13 @@ void paredes::criar_paredes(ALLEGRO_BITMAP *p)
 void piso::criar_piso(ALLEGRO_BITMAP *p)
 {
     map MAPA;
-    for(int i=0; i<40; i++)
+    for(int i=0; i<27; i++)
     {
-        for(j=0; j<45; j++)
+        for(j=0; j<27; j++)
         {
             if(MAPA.m[i][j]=='0')
             {
-                al_draw_bitmap_region(p, 54, 18, 18, 18, 18*j, 18*i, 0);//pisos
+                al_draw_bitmap_region(p, 54, 18, 30, 30, 30*j, 30*i, 0);//pisos
             }
         }
     }

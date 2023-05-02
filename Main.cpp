@@ -8,8 +8,8 @@
 
 using namespace std;
 
-const int SCREEN_W = 814;
-const int SCREEN_H = 814;
+const int SCREEN_W = 790;
+const int SCREEN_H = 685;
 
 
 int main()

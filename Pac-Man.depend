@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1682897962 source:/home/vinicius-santos/Documentos/Pac-Man/Main.cpp
+1683071028 source:/home/vinicius-santos/Documentos/Pac-Man/Main.cpp
 	<stdio.h>
 	<iostream>
 	"allegro5/allegro.h"
@@ -8,9 +8,9 @@
 	"allegro5/allegro_acodec.h"
 	"map.h"
 
-1682967600 /home/vinicius-santos/Documentos/Pac-Man/map.h
+1683068743 /home/vinicius-santos/Documentos/Pac-Man/map.h
 
-1682967172 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
+1683069582 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
 	<stdio.h>
 	<iostream>
 	"allegro5/allegro.h"
