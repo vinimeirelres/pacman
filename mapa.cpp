@@ -13,9 +13,9 @@ void pilulas::criar_pilulas(ALLEGRO_BITMAP *p)
 {
     //int m[24][24];
     map MAPA;
-    for(int i=0; i<48; i++)
+    for(int i=0; i<40; i++)
     {
-        for(j=0; j<48; j++)
+        for(j=0; j<45; j++)
         {
             if(MAPA.m[i][j]=='0')
             {
@@ -29,9 +29,9 @@ void pilulas::criar_pilulas(ALLEGRO_BITMAP *p)
 void paredes::criar_paredes(ALLEGRO_BITMAP *p)
 {
     map MAPA;
-    for(int i=0; i<48; i++)
+    for(int i=0; i<40; i++)
     {
-        for(j=0; j<48; j++)
+        for(j=0; j<45; j++)
         {
             if(MAPA.m[i][j]=='1')
             {
@@ -44,9 +44,9 @@ void paredes::criar_paredes(ALLEGRO_BITMAP *p)
 void piso::criar_piso(ALLEGRO_BITMAP *p)
 {
     map MAPA;
-    for(int i=0; i<48; i++)
+    for(int i=0; i<40; i++)
     {
-        for(j=0; j<48; j++)
+        for(j=0; j<45; j++)
         {
             if(MAPA.m[i][j]=='0')
             {

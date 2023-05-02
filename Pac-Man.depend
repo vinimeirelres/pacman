@@ -8,9 +8,9 @@
 	"allegro5/allegro_acodec.h"
 	"map.h"
 
-1682898127 /home/vinicius-santos/Documentos/Pac-Man/map.h
+1682967600 /home/vinicius-santos/Documentos/Pac-Man/map.h
 
-1682897621 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
+1682967172 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
 	<stdio.h>
 	<iostream>
 	"allegro5/allegro.h"
