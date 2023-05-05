@@ -41,12 +41,14 @@ map::map(){
     }
 }
 
+map::~map(){
+}
+
 pilulas::pilulas(){
     i=j=0;
 }
 
-void pilulas::criar_pilulas(ALLEGRO_BITMAP *p)
-{
+void pilulas::criar_pilulas(ALLEGRO_BITMAP *p){
     map MAPA;
     for(int i=0; i<27; i++)
     {
@@ -61,12 +63,14 @@ void pilulas::criar_pilulas(ALLEGRO_BITMAP *p)
 
 }
 
+pilulas::~pilulas(){
+}
+
 paredes::paredes(){
     i=j=0;
 }
 
-void paredes::criar_paredes(ALLEGRO_BITMAP *p)
-{
+void paredes::criar_paredes(ALLEGRO_BITMAP *p){
     map MAPA;
     for(int i=0; i<27; i++)
     {
@@ -80,12 +84,14 @@ void paredes::criar_paredes(ALLEGRO_BITMAP *p)
     }
 }
 
+paredes::~paredes(){
+}
+
 piso::piso(){
     i=j=0;
 }
 
-void piso::criar_piso(ALLEGRO_BITMAP *p)
-{
+void piso::criar_piso(ALLEGRO_BITMAP *p){
     map MAPA;
     for(int i=0; i<27; i++)
     {
@@ -97,4 +103,7 @@ void piso::criar_piso(ALLEGRO_BITMAP *p)
             }
         }
     }
+}
+
+piso::~piso(){
 }
