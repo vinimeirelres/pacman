@@ -40,4 +40,23 @@ private:
     int j;
 };
 
+class PacMario{
+public:
+    PacMario();
+    ~PacMario();
+    void movimenta();
+    void viraEsq();
+    void viraDir();
+    void comePil();
+    void draw();
+
+private:
+    int x;
+    int y;
+    char direcao;
+    int velocidade;
+    int score;
+    ALLEGRO_BITMAP *pacmario_bitmap;
+};
+
 #endif

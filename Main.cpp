@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <iostream>
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_image.h"
@@ -15,6 +14,7 @@ int main(){
     pilulas pil;
     paredes bloc;
     piso pis;
+    PacMario mario;
 
     ALLEGRO_DISPLAY *display = NULL;
 
@@ -86,5 +86,7 @@ int main(){
 
     al_destroy_bitmap(pac);
     al_destroy_display(display);
+    al_destroy_bitmaṕ(pacmario_bitmap);
+
     return 0;
 }
