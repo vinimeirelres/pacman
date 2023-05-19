@@ -1,3 +1,6 @@
+Pac-Man: ./src/bitmap_darw.c:140: al_draw_tinted_bitmap: Assertion 'bitmap failed.
+Aborted (core dumped)
+
 while (!termina) {
     ALLEGRO_EVENT ev;
     al_wait_for_event(event_queue, &ev);
