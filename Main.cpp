@@ -12,7 +12,6 @@ const int SCREEN_H = 600;
 
 int main(){
 
-    pilulas pil;
     paredes bloc;
     piso pis;
     mapa mapas;
@@ -83,19 +82,20 @@ int main(){
 
         }else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
             termina = true;
+        }else if(ev.type == ALLEGRO_EVENT_KEY_DOWN && ev.keyboard.keycode == ALLEGRO_KEY_UP){
+            mario.movimenta();
         }
 
         al_clear_to_color(al_map_rgb(0,0,0));
 
         bloc.criar_paredes(pac);
         pis.criar_piso(pac);
-        pil.criar_pilulas(pac);
+        mario.criar_pilulas(pac);
         mario.movimenta();
         mario.draw();
 
         al_flip_display();
     }
-
 
 
     al_destroy_bitmap(pac);

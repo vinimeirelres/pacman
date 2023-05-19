@@ -49,13 +49,12 @@ pilulas::pilulas(){
     i=j=0;
 }
 
-void pilulas::criar_pilulas(ALLEGRO_BITMAP *p){
-    mapa MAPA;
+void pilulas::criar_pilulas(ALLEGRO_BITMAP *p, mapa* MAPA){
     for(int i=0; i<27; i++)
     {
         for(j=0; j<27; j++)
         {
-            if(MAPA.m[i][j]=='0')
+            if(MAPA->m[i][j]=='0')
             {
                 al_draw_scaled_bitmap(p, 90, 18, 5, 5, (26*j)+10, (26*i)+10, 7, 7, 0);
             }
@@ -133,25 +132,37 @@ PacMario::~PacMario(){
 }
 
 void PacMario::movimenta(){
-    switch (direcao){
+    int nextX = x;
+    int nextY = y;
+
+    switch (direcao) {
         case 'c':
-            y -= velocidade;
+            nextY -= velocidade;
             break;
         case 'b':
-            y += velocidade;
+            nextY += velocidade;
             break;
         case 'e':
-            x -= velocidade;
+            nextX -= velocidade;
             break;
         case 'd':
-            x += velocidade;
+            nextX += velocidade;
             break;
     }
 
-    if(meumapa->m[y][x] == '1'){
-        meumapa->m[y][x] = '2';
-        score++;
+    if(nextX >= 0 && nextX < 28 && nextY >= 0 && nextY < 28){
+        char nextCell = meumapa->m[nextY][nextX];
+
+        if(nextCell == '1'){
+            score++;
+            meumapa->m[nextY][nextX] = '2';
+        }
     }
+
+    x = nextX;
+    y = nextY;
+
+
 }
 
 void PacMario::viraEsq(){
@@ -179,5 +190,10 @@ void PacMario::comePil() {
 }
 
 void PacMario::draw() {
+    this->movimenta();
     al_draw_bitmap(pacmario_bitmap,x, y, 0);
+}
+
+void PacMario::criar_pilulas(ALLEGRO_BITMAP* bit){
+    p.criar_pilulas(bit,this->meumapa);
 }

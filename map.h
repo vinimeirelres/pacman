@@ -12,7 +12,7 @@ class pilulas{
 public:
     pilulas();
     ~pilulas();
-    void criar_pilulas(ALLEGRO_BITMAP *p);
+    void criar_pilulas(ALLEGRO_BITMAP*, mapa*);
 private:
     int i;
     int j;
@@ -24,7 +24,7 @@ class paredes{
 public:
     paredes();
     ~paredes();
-    void criar_paredes(ALLEGRO_BITMAP *p);
+    void criar_paredes(ALLEGRO_BITMAP*);
 private:
     int i;
     int j;
@@ -34,7 +34,7 @@ class piso{
 public:
     piso();
     ~piso();
-    void criar_piso(ALLEGRO_BITMAP *p);
+    void criar_piso(ALLEGRO_BITMAP*);
 private:
     int i;
     int j;
@@ -49,6 +49,7 @@ public:
     void viraDir();
     void comePil();
     void draw();
+    void criar_pilulas(ALLEGRO_BITMAP*);
 
 private:
     int x;
@@ -58,6 +59,7 @@ private:
     int score;
     ALLEGRO_BITMAP *pacmario_bitmap;
     mapa *meumapa;
+    pilulas p;
 
 };
 
