@@ -1,6 +1,7 @@
 #include <iostream>
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_image.h"
+#include "allegro5/allegro_primitives.h"
 #include "map.h"
 
 using namespace std;
@@ -116,7 +117,12 @@ PacMario::PacMario(){
      direcao = 'b';
      velocidade = 1;
      score = 0;
-     pacmario_bitmap= al_load_bitmap("pacmario.png");
+     pacmario_bitmap= al_load_bitmap("pcmr.png");
+
+    if(!pacmario_bitmap){
+        fprintf(stderr, "failed to create PacMario bitmap!\n");
+       // al_destroy_display(display);
+    }
 }
 
 PacMario::~PacMario(){
@@ -166,5 +172,5 @@ void PacMario::comePil() {
 }
 
 void PacMario::draw() {
-    al_draw_bitmap(pacmario_bitmap, x, y, 0);
+    al_draw_bitmap(pacmario_bitmap,x, y, 0);
 }

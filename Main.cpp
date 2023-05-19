@@ -1,6 +1,7 @@
 #include <iostream>
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_image.h"
+#include "allegro5/allegro_primitives.h"
 #include "map.h"
 
 using namespace std;
@@ -46,12 +47,14 @@ int main(){
     }
 
 
+    mapa mapas;
+
+    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+
+    event_queue = al_create_event_queue();
+
     while (!termina){
-        mapa MAPA;
 
-        ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-
-        event_queue = al_create_event_queue();
 
         if(!event_queue){
             fprintf(stderr, "failed to create event_queue!\n");
