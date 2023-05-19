@@ -45,6 +45,7 @@ int main(){
         return 0;
     }
 
+
     while (!termina){
         mapa MAPA;
 
@@ -74,10 +75,12 @@ int main(){
             termina =true;
         }
 
+        al_clear_to_color(al_map_rgb(0,0,0));
+
         bloc.criar_paredes(pac);
         pis.criar_piso(pac);
         pil.criar_pilulas(pac);
-
+        mario.draw();
 
         al_flip_display();
     }
