@@ -6,6 +6,8 @@
 
 using namespace std;
 
+
+
 mapa::mapa(){
 
     char aux[28][28]={
@@ -117,20 +119,16 @@ PacMario::PacMario(mapa &mapa){
      velocidade = 1;
      score = 0;
 
-     al_init_image_addon();
-
-     this->pacmario_bitmap = al_load_bitmap("pcmr.png");
      this->meumapa = &mapa;
-
-     if(!pacmario_bitmap){
-        fprintf(stderr, "failed to creat PacMario bitmap!\n");
-     }
-
 }
 
 PacMario::~PacMario(){
-    //al_destroy_bitmap(pacmario_bitmap);
-    //delete this->meumapa;
+    al_destroy_bitmap(pacmario_bitmap);
+    delete this->meumapa;
+}
+
+void PacMario::setbitmap(ALLEGRO_BITMAP* p){
+    this->pacmario_bitmap = p;
 }
 
 void PacMario::movimenta(){

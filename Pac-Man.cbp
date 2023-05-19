@@ -32,10 +32,10 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Main.cpp" />
-		<Unit filename="blocos.bmp" />
+		<Unit filename="blocos.png" />
 		<Unit filename="map.h" />
 		<Unit filename="mapa.cpp" />
-		<Unit filename="outro.png" />
+		<Unit filename="pcmr.png" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

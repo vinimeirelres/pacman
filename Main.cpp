@@ -19,6 +19,7 @@ int main(){
 
     ALLEGRO_DISPLAY *display = NULL;
 
+
     if(!al_init()){
         fprintf(stderr, "failed to initialize allegro!\n");
         return 0;
@@ -46,6 +47,16 @@ int main(){
         return 0;
     }
 
+    ALLEGRO_BITMAP* mar;
+    mar = al_load_bitmap("pcmr.png");
+
+    if(!mar){
+        fprintf(stderr, "failed to create PacMario bitmap!\n");
+        al_destroy_display(display);
+        return 0;
+    }else{
+        mario.setbitmap(mar);
+    }
 
 
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
@@ -99,6 +110,7 @@ int main(){
 
 
     al_destroy_bitmap(pac);
+    al_destroy_bitmap(mar);
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
 

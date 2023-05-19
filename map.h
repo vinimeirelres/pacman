@@ -44,6 +44,7 @@ class PacMario{
 public:
     PacMario(mapa &mapa);
     ~PacMario();
+    void setbitmap(ALLEGRO_BITMAP*);
     void movimenta();
     void viraEsq();
     void viraDir();
