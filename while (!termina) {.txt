@@ -1,4 +1,4 @@
-Pac-Man: ./src/bitmap_darw.c:140: al_draw_tinted_bitmap: Assertion 'bitmap failed.
+Pac-Man: ./src/bitmap_darw.c:73: al_draw_tinted_rotated_scaled_bitmap_region: Assertion 'bitmap failed.
 Aborted (core dumped)
 
 while (!termina) {
