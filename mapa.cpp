@@ -190,8 +190,11 @@ void PacMario::comePil() {
 }
 
 void PacMario::draw() {
-    this->movimenta();
     al_draw_bitmap(pacmario_bitmap,x, y, 0);
+}
+
+void PacMario::update(){
+    movimenta();
 }
 
 void PacMario::criar_pilulas(ALLEGRO_BITMAP* bit){

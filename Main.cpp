@@ -91,7 +91,7 @@ int main(){
         bloc.criar_paredes(pac);
         pis.criar_piso(pac);
         mario.criar_pilulas(pac);
-        mario.movimenta();
+        mario.update();
         mario.draw();
 
         al_flip_display();
@@ -100,6 +100,7 @@ int main(){
 
     al_destroy_bitmap(pac);
     al_destroy_display(display);
+    al_destroy_event_queue(event_queue);
 
     return 0;
 }

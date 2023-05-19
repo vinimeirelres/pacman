@@ -49,6 +49,7 @@ public:
     void viraDir();
     void comePil();
     void draw();
+    void update();
     void criar_pilulas(ALLEGRO_BITMAP*);
 
 private:
