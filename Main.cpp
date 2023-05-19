@@ -15,7 +15,8 @@ int main(){
     pilulas pil;
     paredes bloc;
     piso pis;
-    PacMario mario;
+    mapa mapas;
+    PacMario mario(mapas);
 
     ALLEGRO_DISPLAY *display = NULL;
 
@@ -47,7 +48,6 @@ int main(){
     }
 
 
-    mapa mapas;
 
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 
@@ -74,8 +74,15 @@ int main(){
             if(ev.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 termina = true;
             }
+            if(ev.keyboard.keycode == ALLEGRO_KEY_LEFT){
+                mario.viraEsq();
+            }
+            if(ev.keyboard.keycode == ALLEGRO_KEY_RIGHT){
+                mario.viraDir();
+            }
+
         }else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-            termina =true;
+            termina = true;
         }
 
         al_clear_to_color(al_map_rgb(0,0,0));
@@ -83,6 +90,7 @@ int main(){
         bloc.criar_paredes(pac);
         pis.criar_piso(pac);
         pil.criar_pilulas(pac);
+        mario.movimenta();
         mario.draw();
 
         al_flip_display();

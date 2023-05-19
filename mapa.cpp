@@ -111,22 +111,25 @@ piso::~piso(){
 
 // b = baixo; c = cima; e = esquerda; d = direita
 
-PacMario::PacMario(){
-     x = 0;
-     y = 0;
+PacMario::PacMario(mapa &mapa){
+     x = 1;
+     y = 1;
      direcao = 'b';
      velocidade = 1;
      score = 0;
-     pacmario_bitmap= al_load_bitmap("pcmr.png");
 
-    if(!pacmario_bitmap){
-        fprintf(stderr, "failed to create PacMario bitmap!\n");
-       // al_destroy_display(display);
-    }
+     this->pacmario_bitmap = al_load_bitmap("pcmr.png");
+     this->meumapa = &mapa;
+
+     if(!pacmario_bitmap){
+        fprintf(stderr, "failed to creat PacMario bitmap!\n");
+     }
+
 }
 
 PacMario::~PacMario(){
     al_destroy_bitmap(pacmario_bitmap);
+    delete this->meumapa;
 }
 
 void PacMario::movimenta(){
@@ -143,6 +146,11 @@ void PacMario::movimenta(){
         case 'd':
             x += velocidade;
             break;
+    }
+
+    if(meumapa->m[y][x] == '1'){
+        meumapa->m[y][x] = '2';
+        score++;
     }
 }
 
@@ -163,9 +171,8 @@ void PacMario::viraDir(){
 }
 
 void PacMario::comePil() {
-    mapa maps;
-    if(maps.m[y][x] == '1'){
-        maps.m[y][x] = '2';
+    if(meumapa->m[y][x] == '1'){
+        meumapa->m[y][x] = '2';
         score++;
     }
 

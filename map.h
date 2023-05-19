@@ -42,7 +42,7 @@ private:
 
 class PacMario{
 public:
-    PacMario();
+    PacMario(mapa &mapa);
     ~PacMario();
     void movimenta();
     void viraEsq();
@@ -57,6 +57,9 @@ private:
     int velocidade;
     int score;
     ALLEGRO_BITMAP *pacmario_bitmap;
+    mapa *meumapa;
+
 };
 
 #endif
+
