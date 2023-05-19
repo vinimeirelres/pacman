@@ -117,6 +117,8 @@ PacMario::PacMario(mapa &mapa){
      velocidade = 1;
      score = 0;
 
+     al_init_image_addon();
+
      this->pacmario_bitmap = al_load_bitmap("pcmr.png");
      this->meumapa = &mapa;
 
@@ -127,8 +129,8 @@ PacMario::PacMario(mapa &mapa){
 }
 
 PacMario::~PacMario(){
-    al_destroy_bitmap(pacmario_bitmap);
-    delete this->meumapa;
+    //al_destroy_bitmap(pacmario_bitmap);
+    //delete this->meumapa;
 }
 
 void PacMario::movimenta(){
@@ -190,7 +192,7 @@ void PacMario::comePil() {
 }
 
 void PacMario::draw() {
-    al_draw_bitmap(pacmario_bitmap,x, y, 0);
+    al_draw_bitmap(pacmario_bitmap,x*26, y*26, 0);
 }
 
 void PacMario::update(){
