@@ -1,0 +1,26 @@
+while (!termina) {
+    ALLEGRO_EVENT ev;
+    al_wait_for_event(event_queue, &ev);
+
+    if (ev.type == ALLEGRO_EVENT_KEY_DOWN) {
+        if (ev.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
+            termina = true;
+        }
+    } else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+        termina = true;
+    }
+
+    // Handle other events and update game state here
+
+    // Clear the display
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+
+    // Draw the walls, floor, pills, and Mario character
+    bloc.criar_paredes(pac);
+    pis.criar_piso(pac);
+    pil.criar_pilulas(pac);
+    mario.draw();
+
+    // Update the screen
+    al_flip_display();
+}
