@@ -1,29 +1,170 @@
-Pac-Man: ./src/bitmap_darw.c:73: al_draw_tinted_rotated_scaled_bitmap_region: Assertion 'bitmap failed.
-Aborted (core dumped)
+class PacMario {
+public:
+  PacMario(const mapa &mapa);
+  void movimenta();
+  void viraEsq();
+  void viraDir();
+  void comePil();
+  void draw();
 
-while (!termina) {
-    ALLEGRO_EVENT ev;
-    al_wait_for_event(event_queue, &ev);
+private:
+  int x;
+  int y;
+  char direcao;
+  int velocidade;
+  int score;
+  mapa *mapa;
+};
 
-    if (ev.type == ALLEGRO_EVENT_KEY_DOWN) {
-        if (ev.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
-            termina = true;
-        }
-    } else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
-        termina = true;
+PacMario::PacMario(const mapa &mapa) {
+  x = 0;
+  y = 0;
+  direcao = 'b';
+  velocidade = 1;
+  score = 0;
+  this->mapa = &mapa;
+}
+
+void PacMario::movimenta() {
+  switch (direcao) {
+    case 'c':
+      y -= velocidade;
+      break;
+    case 'b':
+      y += velocidade;
+      break;
+    case 'e':
+      x -= velocidade;
+      break;
+    case 'd':
+      x += velocidade;
+      break;
+  }
+
+  if (mapa->m[y][x] == '1') {
+    mapa->m[y][x] = '2';
+    score++;
+  }
+}
+
+void PacMario::viraEsq() {
+  if (direcao == 'c') {
+    direcao = 'e';
+  } else {
+    direcao = direcao - 1;
+  }
+}
+
+void PacMario::viraDir() {
+  if (direcao == 'd') {
+    direcao = 'c';
+  } else {
+    direcao = direcao + 1;
+  }
+}
+
+void PacMario::comePil() {
+  if (mapa->m[y][x] == '1') {
+    mapa->m[y][x] = '2';
+    score++;
+  }
+}
+
+void PacMario::draw() {
+  al_draw_bitmap(pacmario_bitmap, x, y, 0);
+}
+
+
+
+int main() {
+
+  pilulas pil;
+  paredes bloc;
+  piso pis;
+  PacMario mario(mapa);
+
+  ALLEGRO_DISPLAY *display = NULL;
+
+  if(!al_init()){
+    fprintf(stderr, "failed to initialize allegro!\n");
+    return 0;
+  }
+
+  bool termina = false;
+  bool teclas [255]= {false};
+
+  al_init_image_addon();
+  al_install_keyboard();
+
+  display = al_create_display(SCREEN_W, SCREEN_H);
+  if(!display){
+    fprintf(stderr, "failed to create display!\n");
+    return 0;
+  }
+
+
+  ALLEGRO_BITMAP  *pac;
+  pac = al_load_bitmap("blocos.png");
+
+  if(!pac){
+    fprintf(stderr, "failed to create Pacman bitmap!\n");
+    al_destroy_display(display);
+    return 0;
+  }
+
+
+  mapa mapas;
+
+  ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+
+  event_queue = al_create_event_queue();
+
+  while (!termina){
+
+
+    if(!event_queue){
+      fprintf(stderr, "failed to create event_queue!\n");
+      al_destroy_bitmap(pac);
+      al_destroy_display(display);
+      return -1;
     }
 
-    // Handle other events and update game state here
+    al_register_event_source(event_queue, al_get_display_event_source(display));
+    al_register_event_source(event_queue, al_get_keyboard_event_source());
 
-    // Clear the display
-    al_clear_to_color(al_map_rgb(0, 0, 0));
+    ALLEGRO_EVENT ev;
 
-    // Draw the walls, floor, pills, and Mario character
+    al_wait_for_event(event_queue, &ev);
+
+    if(ev.type == ALLEGRO_EVENT_KEY_DOWN){
+      if(ev.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
+        termina = true;
+      }
+      if(ev.keyboard.keycode == ALLEGRO_KEY_LEFT){
+        mario.viraEsq();
+      }
+      if(ev.keyboard.keycode == ALLEGRO_KEY_RIGHT){
+        mario.viraDir();
+      }
+    }else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+      termina =true;
+    }
+
+    al_clear_to_color(al_map_rgb(0,0,0));
+
     bloc.criar_paredes(pac);
     pis.criar_piso(pac);
     pil.criar_pilulas(pac);
+    mario.movimenta();
     mario.draw();
 
-    // Update the screen
     al_flip_display();
+  }
+
+
+
+  al_destroy_bitmap(pac);
+  al_destroy_display(display);
+
+  return 0;
 }
