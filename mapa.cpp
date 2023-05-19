@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <iostream>
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_image.h"
@@ -6,7 +5,8 @@
 
 using namespace std;
 
-map::map(){
+mapa::mapa(){
+
     char aux[28][28]={
         "111111111111111111111111111",
         "100000000000000000000000001",            //0 - Pilulas e Piso;
@@ -41,7 +41,7 @@ map::map(){
     }
 }
 
-map::~map(){
+mapa::~mapa(){
 }
 
 pilulas::pilulas(){
@@ -49,7 +49,7 @@ pilulas::pilulas(){
 }
 
 void pilulas::criar_pilulas(ALLEGRO_BITMAP *p){
-    map MAPA;
+    mapa MAPA;
     for(int i=0; i<27; i++)
     {
         for(j=0; j<27; j++)
@@ -71,7 +71,7 @@ paredes::paredes(){
 }
 
 void paredes::criar_paredes(ALLEGRO_BITMAP *p){
-    map MAPA;
+    mapa MAPA;
     for(int i=0; i<27; i++)
     {
         for(j=0; j<27; j++)
@@ -92,7 +92,7 @@ piso::piso(){
 }
 
 void piso::criar_piso(ALLEGRO_BITMAP *p){
-    map MAPA;
+    mapa MAPA;
     for(int i=0; i<27; i++)
     {
         for(j=0; j<27; j++)
@@ -106,4 +106,65 @@ void piso::criar_piso(ALLEGRO_BITMAP *p){
 }
 
 piso::~piso(){
+}
+
+// b = baixo; c = cima; e = esquerda; d = direita
+
+PacMario::PacMario(){
+     x = 0;
+     y = 0;
+     direcao = 'b';
+     velocidade = 1;
+     score = 0;
+     pacmario_bitmap= al_load_bitmap("pacmario.png");
+}
+
+PacMario::~PacMario(){
+    al_destroy_bitmap(pacmario_bitmap);
+}
+
+void PacMario::movimenta(){
+    switch (direcao){
+        case 'c':
+            y -= velocidade;
+            break;
+        case 'b':
+            y += velocidade;
+            break;
+        case 'e':
+            x -= velocidade;
+            break;
+        case 'd':
+            x += velocidade;
+            break;
+    }
+}
+
+void PacMario::viraEsq(){
+    if (direcao == 'c'){
+        direcao = 'e';
+    }else{
+        direcao = direcao - 1;
+    }
+}
+
+void PacMario::viraDir(){
+    if (direcao == 'd'){
+        direcao = 'c';
+    }else{
+        direcao = direcao + 1;
+    }
+}
+
+void PacMario::comePil() {
+    mapa maps;
+    if(maps.m[y][x] == '1'){
+        maps.m[y][x] = '2';
+        score++;
+    }
+
+}
+
+void PacMario::draw() {
+    al_draw_bitmap(pacmario_bitmap, x, y, 0);
 }

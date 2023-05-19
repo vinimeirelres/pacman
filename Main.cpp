@@ -46,7 +46,7 @@ int main(){
     }
 
     while (!termina){
-        map MAPA;
+        mapa MAPA;
 
         ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 
@@ -86,7 +86,6 @@ int main(){
 
     al_destroy_bitmap(pac);
     al_destroy_display(display);
-    al_destroy_bitmaṕ(pacmario_bitmap);
 
     return 0;
 }

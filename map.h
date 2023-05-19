@@ -1,10 +1,10 @@
 #ifndef MAP_H
 #define MAP_H
 
-class map{
+class mapa{
 public:
-   map();
-   ~map();
+   mapa();
+   ~mapa();
    char m[28][28];
 };
 
