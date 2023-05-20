@@ -2,10 +2,10 @@
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_image.h"
 #include "allegro5/allegro_primitives.h"
+#include "allegro5/allegro_font.h"
 #include "map.h"
 
 using namespace std;
-
 
 
 mapa::mapa(){
@@ -123,6 +123,7 @@ PacMario::PacMario(mapa &mapa){
 
 PacMario::~PacMario(){
     al_destroy_bitmap(pacmario_bitmap);
+    al_destroy_font(score_font);
     delete this->meumapa;
 }
 
@@ -145,10 +146,10 @@ void PacMario::movimenta(bool* teclas){
     }
 
     if(nextX >= 0 && nextX < 28 && nextY >= 0 && nextY < 28){
-        char nextCell = meumapa->m[nextY][nextX];
 
         if(meumapa->m[nextY][nextX] == '0'){
             score++;
+            remainingpills--;
             meumapa->m[nextY][nextX] = '2';
         }
 
@@ -162,7 +163,11 @@ void PacMario::movimenta(bool* teclas){
 
 
 void PacMario::draw() {
+    this->score_font = al_load_font("arial.ttf", 16,0);
+
+    ALLEGRO_COLOR color = al_map_rgb(255,255, 255);
     al_draw_bitmap(pacmario_bitmap,x*26, y*26, 0);
+   // al_draw_text(score_font,'1', 0,0, color);
 }
 
 void PacMario::update(bool* teclas){

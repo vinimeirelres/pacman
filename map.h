@@ -1,6 +1,9 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "allegro5/allegro_font.h"
+
+
 class mapa{
 public:
    mapa();
@@ -49,6 +52,8 @@ public:
     void draw();
     void update(bool*);
     void criar_pilulas(ALLEGRO_BITMAP*);
+    int remainingpills = 309;
+
 
 private:
     int x;
@@ -59,6 +64,7 @@ private:
     ALLEGRO_BITMAP *pacmario_bitmap;
     mapa *meumapa;
     pilulas p;
+    ALLEGRO_FONT* score_font;
 
 };
 

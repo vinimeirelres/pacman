@@ -87,6 +87,9 @@ int main(){
             }else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
                 termina = true;
             }
+        if(mario.remainingpills == 0){
+            termina = true;
+        }
 
        al_clear_to_color(al_map_rgb(0,0,0));
 
