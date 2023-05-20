@@ -45,12 +45,9 @@ public:
     PacMario(mapa &mapa);
     ~PacMario();
     void setbitmap(ALLEGRO_BITMAP*);
-    void movimenta();
-    void viraEsq();
-    void viraDir();
-    void comePil();
+    void movimenta(bool*);
     void draw();
-    void update();
+    void update(bool*);
     void criar_pilulas(ALLEGRO_BITMAP*);
 
 private:

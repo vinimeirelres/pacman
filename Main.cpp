@@ -88,25 +88,12 @@ int main(){
                 termina = true;
             }
 
-        if(teclas[ALLEGRO_KEY_UP]){
-            mario.viraDir();
-        }else if(teclas[ALLEGRO_KEY_DOWN]){
-            mario.viraEsq();
-        }else if (teclas[ALLEGRO_KEY_LEFT]){
-            mario.viraEsq();
-        }else if (teclas[ALLEGRO_KEY_RIGHT]){
-            mario.viraDir();
-        }
-
-
-
-
-        al_clear_to_color(al_map_rgb(0,0,0));
+       al_clear_to_color(al_map_rgb(0,0,0));
 
         bloc.criar_paredes(pac);
         pis.criar_piso(pac);
         mario.criar_pilulas(pac);
-        mario.update();
+        mario.update(teclas);
         mario.draw();
 
         al_flip_display();

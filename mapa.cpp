@@ -23,7 +23,7 @@ mapa::mapa(){
         "101010101010101010101010101",
         "101010101010101010101010101",
         "101000000000000000000000101",
-        "101001111111101111111100101",
+        "101001111111000111111100101",
         "100001000000222000000100001",
         "111101000000222000000101111",
         "100001111111111111111100001",
@@ -110,11 +110,10 @@ void piso::criar_piso(ALLEGRO_BITMAP *p){
 piso::~piso(){
 }
 
-// b = baixo; c = cima; e = esquerda; d = direita
 
 PacMario::PacMario(mapa &mapa){
-     x = 14;
-     y = 14;
+     x = 13;
+     y = 13;
      direcao = 'b';
      velocidade = 1;
      score = 0;
@@ -131,23 +130,18 @@ void PacMario::setbitmap(ALLEGRO_BITMAP* p){
     this->pacmario_bitmap = p;
 }
 
-void PacMario::movimenta(){
+void PacMario::movimenta(bool* teclas){
     int nextX = x;
     int nextY = y;
 
-    switch (direcao) {
-        case 'c':
-            nextY -= velocidade;
-            break;
-        case 'b':
-            nextY += velocidade;
-            break;
-        case 'e':
-            nextX -= velocidade;
-            break;
-        case 'd':
-            nextX += velocidade;
-            break;
+    if(teclas[ALLEGRO_KEY_UP]){
+        nextY -= velocidade;
+    }else if(teclas[ALLEGRO_KEY_DOWN]){
+        nextY += velocidade;
+    }else if(teclas[ALLEGRO_KEY_LEFT]){
+        nextX -= velocidade;
+    }else if(teclas[ALLEGRO_KEY_RIGHT]){
+        nextX += velocidade;
     }
 
     if(nextX >= 0 && nextX < 28 && nextY >= 0 && nextY < 28){
@@ -158,7 +152,6 @@ void PacMario::movimenta(){
             meumapa->m[nextY][nextX] = '2';
         }
 
-
         if(meumapa->m[nextY][nextX] != '1'){
             x = nextX;
             y = nextY;
@@ -166,36 +159,14 @@ void PacMario::movimenta(){
     }
 }
 
-void PacMario::viraEsq(){
-    if (direcao == 'c'){
-        direcao = 'e';
-    }else{
-        direcao = direcao - 1;
-    }
-}
 
-void PacMario::viraDir(){
-    if (direcao == 'd'){
-        direcao = 'c';
-    }else{
-        direcao = direcao + 1;
-    }
-}
-
-void PacMario::comePil() {
-    if(meumapa->m[y][x] == '1'){
-        meumapa->m[y][x] = '2';
-        score++;
-    }
-
-}
 
 void PacMario::draw() {
     al_draw_bitmap(pacmario_bitmap,x*26, y*26, 0);
 }
 
-void PacMario::update(){
-    movimenta();
+void PacMario::update(bool* teclas){
+    movimenta(teclas);
 }
 
 void PacMario::criar_pilulas(ALLEGRO_BITMAP* bit){
