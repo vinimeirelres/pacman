@@ -113,8 +113,8 @@ piso::~piso(){
 // b = baixo; c = cima; e = esquerda; d = direita
 
 PacMario::PacMario(mapa &mapa){
-     x = 1;
-     y = 1;
+     x = 14;
+     y = 14;
      direcao = 'b';
      velocidade = 1;
      score = 0;
@@ -153,16 +153,17 @@ void PacMario::movimenta(){
     if(nextX >= 0 && nextX < 28 && nextY >= 0 && nextY < 28){
         char nextCell = meumapa->m[nextY][nextX];
 
-        if(nextCell == '1'){
+        if(meumapa->m[nextY][nextX] == '0'){
             score++;
             meumapa->m[nextY][nextX] = '2';
         }
+
+
+        if(meumapa->m[nextY][nextX] != '1'){
+            x = nextX;
+            y = nextY;
+        }
     }
-
-    x = nextX;
-    y = nextY;
-
-
 }
 
 void PacMario::viraEsq(){

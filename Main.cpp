@@ -26,7 +26,7 @@ int main(){
     }
 
     bool termina = false;
-    bool teclas [255]= {false};
+    bool teclas [ALLEGRO_KEY_MAX]= {false};
 
     al_init_image_addon();
     al_install_keyboard();
@@ -62,40 +62,44 @@ int main(){
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 
     event_queue = al_create_event_queue();
-
-    while (!termina){
-
-
-        if(!event_queue){
+    if(!event_queue){
             fprintf(stderr, "failed to create event_queue!\n");
             al_destroy_bitmap(pac);
             al_destroy_display(display);
             return -1;
         }
 
-        al_register_event_source(event_queue, al_get_display_event_source(display));
-        al_register_event_source(event_queue, al_get_keyboard_event_source());
+    al_register_event_source(event_queue, al_get_display_event_source(display));
+    al_register_event_source(event_queue, al_get_keyboard_event_source());
 
+    while (!termina){
         ALLEGRO_EVENT ev;
-
         al_wait_for_event(event_queue, &ev);
 
         if(ev.type == ALLEGRO_EVENT_KEY_DOWN){
             if(ev.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 termina = true;
+            }else{
+                teclas[ev.keyboard.keycode] = true;
             }
-            if(ev.keyboard.keycode == ALLEGRO_KEY_LEFT){
-                mario.viraEsq();
-            }
-            if(ev.keyboard.keycode == ALLEGRO_KEY_RIGHT){
-                mario.viraDir();
+            }else if (ev.type == ALLEGRO_EVENT_KEY_UP){
+                teclas[ev.keyboard.keycode] = false;
+            }else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+                termina = true;
             }
 
-        }else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-            termina = true;
-        }else if(ev.type == ALLEGRO_EVENT_KEY_DOWN && ev.keyboard.keycode == ALLEGRO_KEY_UP){
-            mario.movimenta();
+        if(teclas[ALLEGRO_KEY_UP]){
+            mario.viraDir();
+        }else if(teclas[ALLEGRO_KEY_DOWN]){
+            mario.viraEsq();
+        }else if (teclas[ALLEGRO_KEY_LEFT]){
+            mario.viraEsq();
+        }else if (teclas[ALLEGRO_KEY_RIGHT]){
+            mario.viraDir();
         }
+
+
+
 
         al_clear_to_color(al_map_rgb(0,0,0));
 
