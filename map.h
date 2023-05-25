@@ -64,7 +64,7 @@ private:
     ALLEGRO_BITMAP *pacmario_bitmap;
     mapa *meumapa;
     pilulas p;
-    ALLEGRO_FONT* score_font;
+    ALLEGRO_FONT* score_font=NULL;
 
 };
 

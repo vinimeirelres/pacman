@@ -3,6 +3,7 @@
 #include "allegro5/allegro_image.h"
 #include "allegro5/allegro_primitives.h"
 #include "allegro5/allegro_font.h"
+#include "allegro5/allegro_ttf.h"
 #include "map.h"
 
 using namespace std;
@@ -27,12 +28,12 @@ mapa::mapa(){
         "100001000000222000000100001",
         "111101000000222000000101111",
         "100001111111111111111100001",
-        "101000000000000000000010101",
+        "101000000000000000000000101",
         "101011111011111011111010101",
         "101000100010001000100010101",
-        "101010101010101010101000101",
+        "101010101010101010101010101",
         "101010101010101010100010101",
-        "100010001000100020101010001",
+        "100010001000100020101000001",
         "111111111111111111111111111",
     };
     int i, j;
@@ -163,11 +164,14 @@ void PacMario::movimenta(bool* teclas){
 
 
 void PacMario::draw() {
-    this->score_font = al_load_font("arial.ttf", 16,0);
+    this->score_font = al_load_ttf_font("arial.ttf", 16,0);
+
+    char n = '1';
+    char* p = &n;
 
     ALLEGRO_COLOR color = al_map_rgb(255,255, 255);
     al_draw_bitmap(pacmario_bitmap,x*26, y*26, 0);
-   // al_draw_text(score_font,'1', 0,0, color);
+    //al_draw_text(score_font, color, 0, 0, 0, p );
 }
 
 void PacMario::update(bool* teclas){

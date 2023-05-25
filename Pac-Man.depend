@@ -6,14 +6,15 @@
 	"allegro5/allegro_primitives.h"
 	"map.h"
 
-1684550860 /home/vinicius-santos/Documentos/Pac-Man/map.h
+1685043021 /home/vinicius-santos/Documentos/Pac-Man/map.h
 	"allegro5/allegro_font.h"
 
-1684551158 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
+1685046070 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
 	<iostream>
 	"allegro5/allegro.h"
 	"allegro5/allegro_image.h"
 	"allegro5/allegro_primitives.h"
 	"allegro5/allegro_font.h"
+	"allegro5/allegro_ttf.h"
 	"map.h"
 
