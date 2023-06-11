@@ -2,6 +2,7 @@
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_image.h"
 #include "allegro5/allegro_primitives.h"
+
 #include "map.h"
 
 using namespace std;
@@ -58,6 +59,13 @@ int main(){
         mario.setbitmap(mar);
     }
 
+    ALLEGRO_TIMER *timer = NULL;
+    timer = al_create_timer(60);
+   if(!timer) {
+      fprintf(stderr, "failed to create timer!\n");
+      return -1;
+   }
+
 
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 
@@ -66,11 +74,15 @@ int main(){
             fprintf(stderr, "failed to create event_queue!\n");
             al_destroy_bitmap(pac);
             al_destroy_display(display);
+            al_destroy_timer(timer);
+
             return -1;
         }
 
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
+    al_register_event_source(event_queue, al_get_timer_event_source(timer));//Evento de tempo
+
 
     while (!termina){
         ALLEGRO_EVENT ev;
@@ -105,6 +117,7 @@ int main(){
 
     al_destroy_bitmap(pac);
     al_destroy_bitmap(mar);
+    al_destroy_timer(timer);
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
 
