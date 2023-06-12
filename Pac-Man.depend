@@ -1,0 +1,76 @@
+# depslib dependency file v1.0
+1686583809 source:/home/vinicius-santos/Documentos/Pac-Man/Main.cpp
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_primitives.h"
+	"mapa.h"
+	"pacmario.h"
+	"paredes.h"
+	"pilulas.h"
+	"piso.h"
+
+1686578743 /home/vinicius-santos/Documentos/Pac-Man/map.h
+	"allegro5/allegro_font.h"
+
+1686583656 source:/home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_primitives.h"
+	"allegro5/allegro_font.h"
+	"allegro5/allegro_ttf.h"
+	"mapa.h"
+
+1686522042 /home/vinicius-santos/Documentos/Pac-Man/mapa.cpp
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_primitives.h"
+	"allegro5/allegro_font.h"
+	"allegro5/allegro_ttf.h"
+	"map.h"
+
+1686582975 /home/vinicius-santos/Documentos/Pac-Man/mapa.h
+
+1686521371 /home/vinicius-santos/Documentos/Pac-Man/paredes.h
+
+1686583166 /home/vinicius-santos/Documentos/Pac-Man/piso.h
+
+1686583900 /home/vinicius-santos/Documentos/Pac-Man/pilulas.h
+	"mapa.h"
+
+1686583866 /home/vinicius-santos/Documentos/Pac-Man/pacmario.h
+	"mapa.h"
+	"pilulas.h"
+	"allegro5/allegro_font.h"
+
+1686583459 source:/home/vinicius-santos/Documentos/Pac-Man/paredes.cpp
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_primitives.h"
+	"allegro5/allegro_font.h"
+	"allegro5/allegro_ttf.h"
+	"paredes.h"
+	"mapa.h"
+
+1686583868 source:/home/vinicius-santos/Documentos/Pac-Man/pacmario.cpp
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_primitives.h"
+	"allegro5/allegro_font.h"
+	"allegro5/allegro_ttf.h"
+	"pacmario.h"
+
+1686583571 source:/home/vinicius-santos/Documentos/Pac-Man/piso.cpp
+	<iostream>
+	"allegro5/allegro.h"
+	"allegro5/allegro_image.h"
+	"allegro5/allegro_primitives.h"
+	"allegro5/allegro_font.h"
+	"allegro5/allegro_ttf.h"
+	"piso.h"
+	"mapa.h"
+
