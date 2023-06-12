@@ -1,0 +1,36 @@
+int nextX = x;
+  int nextY = y;
+
+  // If the user presses a movement key, Pac-Man will move in that direction.
+  if (teclas[ALLEGRO_KEY_UP]) {
+    nextY -= velocidade;
+  } else if (teclas[ALLEGRO_KEY_DOWN]) {
+    nextY += velocidade;
+  } else if (teclas[ALLEGRO_KEY_LEFT]) {
+    nextX -= velocidade;
+  } else if (teclas[ALLEGRO_KEY_RIGHT]) {
+    nextX += velocidade;
+  }
+
+  // If Pac-Man is not moving into a wall, he will move to the new position.
+  if (nextX >= 0 && nextX < 28 && nextY >= 0 && nextY < 28 && mapa.m[nextY][nextX] != '1') {
+    x = nextX;
+    y = nextY;
+  }
+
+  // If Pac-Man is moving into a wall, he will turn around.
+  if (nextX < 0 || nextX >= 28 || nextY < 0 || nextY >= 28 || mapa.m[nextY][nextX] == '1') {
+    if (teclas[ALLEGRO_KEY_UP]) {
+      teclas[ALLEGRO_KEY_DOWN] = true;
+      teclas[ALLEGRO_KEY_UP] = false;
+    } else if (teclas[ALLEGRO_KEY_DOWN]) {
+      teclas[ALLEGRO_KEY_UP] = true;
+      teclas[ALLEGRO_KEY_DOWN] = false;
+    } else if (teclas[ALLEGRO_KEY_LEFT]) {
+      teclas[ALLEGRO_KEY_RIGHT] = true;
+      teclas[ALLEGRO_KEY_LEFT] = false;
+    } else if (teclas[ALLEGRO_KEY_RIGHT]) {
+      teclas[ALLEGRO_KEY_LEFT] = true;
+      teclas[ALLEGRO_KEY_RIGHT] = false;
+    }
+  }
