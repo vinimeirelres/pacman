@@ -31,16 +31,33 @@ void PacMario::setbitmap(ALLEGRO_BITMAP* p){
 }
 
 void PacMario::movimenta(bool* teclas, ALLEGRO_TIMER* timer){
+    static int moveDirection = -1;
+
+    if (moveDirection == -1) {
+        if (teclas[ALLEGRO_KEY_UP]) {
+            moveDirection = ALLEGRO_KEY_UP;
+        }
+        else if (teclas[ALLEGRO_KEY_DOWN]) {
+            moveDirection = ALLEGRO_KEY_DOWN;
+        }
+        else if (teclas[ALLEGRO_KEY_LEFT]) {
+            moveDirection = ALLEGRO_KEY_LEFT;
+        }
+        else if (teclas[ALLEGRO_KEY_RIGHT]) {
+            moveDirection = ALLEGRO_KEY_RIGHT;
+        }
+    }
+    
     int nextX = x;
     int nextY = y;
 
-    if(teclas[ALLEGRO_KEY_UP]){
+    if(moveDirection == ALLEGRO_KEY_UP){
         nextY -= velocidade;
-    }else if(teclas[ALLEGRO_KEY_DOWN]){
+    }else if(moveDirection == ALLEGRO_KEY_DOWN){
         nextY += velocidade;
-    }else if(teclas[ALLEGRO_KEY_LEFT]){
+    }else if(moveDirection == ALLEGRO_KEY_LEFT){
         nextX -= velocidade;
-    }else if(teclas[ALLEGRO_KEY_RIGHT]){
+    }else if(moveDirection == ALLEGRO_KEY_RIGHT){
         nextX += velocidade;
     }
 
@@ -55,8 +72,14 @@ void PacMario::movimenta(bool* teclas, ALLEGRO_TIMER* timer){
         if(meumapa->m[nextY][nextX] != '1'){
             x = nextX;
             y = nextY;
+        }else {
+            moveDirection = -1;
         }
     }
+    else {
+        moveDirection = -1;
+    }
+    
 }
 
 
