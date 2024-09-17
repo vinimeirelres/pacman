@@ -5,6 +5,3 @@ Object Oriented Programming;
 Universidade Federal de Viçosa
 
 Luiz Benedito Alves Neto, Mariana de Deus Castro, Vinícius Meireles Pereira Santos
-
-
-feat. Aline Luiza Souza
