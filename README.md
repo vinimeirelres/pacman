@@ -6,9 +6,9 @@ Implementação simplificada do clássico **Pac-Man** em **C++** com uso da bibl
 
 ## Colaboradores
 
+- Vinícius Meireles Pereira Santos
 - Luiz Benedito Alves Neto  
 - Mariana de Deus Castro  
-- Vinícius Meireles Pereira Santos
 
 ---
 
